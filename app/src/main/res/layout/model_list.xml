@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:outlineAmbientShadowColor="@color/black"
+    android:paddingLeft="40dp"
+    android:paddingTop="10dp">
+    <TextView
+        android:id="@+id/txtViewItemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ExampleExampleExample"
+        android:textAlignment="textStart"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtViewModelsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtViewItemNumber"
+        android:text="Model: "
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtViewModels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txtViewModelsTitle"
+        android:layout_below="@id/txtViewItemNumber"
+        android:text="ExampleExampleExample"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtViewPricesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtViewModelsTitle"
+        android:text="Price: "
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtViewPrices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txtViewModelsTitle"
+        android:layout_below="@id/txtViewModels"
+        android:text="ExampleExampleExample"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtViewMileagesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtViewPricesTitle"
+        android:text="Mileage: "
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtViewMileages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txtViewMileagesTitle"
+        android:layout_below="@id/txtViewPrices"
+        android:paddingBottom="2dip"
+        android:text="ExampleExampleExample"
+        android:paddingTop="6dip"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/txtViewCar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        tools:src="@drawable/car" />
+
+</RelativeLayout>
