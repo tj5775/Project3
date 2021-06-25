@@ -34,7 +34,6 @@ public class RightFragment extends Fragment{
     private TextView txtViewDetails;
     private TextView txtViewUpdate;
     private ImageButton imageBtnBack;
-
     private ProgressBar mProgressBar;
     private String vehicleID;
     private String vehicle_make;
@@ -50,10 +49,10 @@ public class RightFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            arrayIDs = getArguments().getStringArrayList("data");
-            vehicleID = arrayIDs.get(0);
-            vehicle_make = arrayIDs.get(1);
-            vehicle_model = arrayIDs.get(2);
+            arrayIDs = getArguments().getStringArrayList("data");  //  List array to receive the data from ListFragment
+            vehicleID = arrayIDs.get(0);                                // vehicleID is element 0
+            vehicle_make = arrayIDs.get(1);                             // make is element 1
+            vehicle_model = arrayIDs.get(2);                            // model is element 2
         }
     }
 
@@ -63,13 +62,14 @@ public class RightFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_right_layout, container, false);
 
-        wiringUp(view);
-        setCarInfo();
+        wiringUp(view);             // calling wiringUp method
+        setCarInfo();               // calling setCarInfo method
 
         return view;
     }
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+    // wiringUp method instantiates the variables with the resource ids
 
     public void wiringUp(View view){
         carInfo = new ArrayList<>();
@@ -79,22 +79,23 @@ public class RightFragment extends Fragment{
         imageViewCar = view.findViewById(R.id.imageViewCar);
         txtViewDetails = view.findViewById(R.id.textViewDetails);
         txtViewUpdate = view.findViewById(R.id.textViewUpdate);
-        //mProgressBar = view.findViewById(R.id.progressbarRight);
         imageBtnBack = view.findViewById(R.id.backBtn);
         mProgressBar = view.findViewById(R.id.progressbarRight);
-        mProgressBar.setVisibility(View.INVISIBLE);
+
+        mProgressBar.setVisibility(View.INVISIBLE);             // setting progress bar invisible
 
 
-        txtViewMake.setText("Make: " + vehicle_make);
-        txtViewModel.setText("Model: " + vehicle_model);
-        imageBtnBack.setOnClickListener(new View.OnClickListener() {
+        txtViewMake.setText("Make: " + vehicle_make);           // setting the text for make
+        txtViewModel.setText("Model: " + vehicle_model);        // setting the text for model
+        imageBtnBack.setOnClickListener(new View.OnClickListener() {    // setting listener for back button
             @Override
             public void onClick(View v) {
-                mCommunicator.passDataRightToLeft();
+                mCommunicator.passDataRightToLeft();            // sends user to LeftFragment
             }
         });
     }
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+    // setCarInfo method fills up all the car's info in their respective text and image views
 
     public void setCarInfo(){
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -103,9 +104,8 @@ public class RightFragment extends Fragment{
             public void run() {
                 //doInBackground
                 Log.d("doInBackground", "HERE");
-                mProgressBar.setVisibility(View.VISIBLE);
+                mProgressBar.setVisibility(View.VISIBLE);       // sets the progress bar visible while loading
                 HttpHandler sh = new HttpHandler();
-
                 String jsonStr = "{\"cars_list\":";
                 jsonStr += sh.makeServiceCall(url + vehicleID);
                 jsonStr += "}";
@@ -142,12 +142,11 @@ public class RightFragment extends Fragment{
                         // postExecute
                         Log.d("postExecute", "HERE");
 
-                        txtViewPrice.setText("Price: $" + carInfo.get(0));
-                        txtViewUpdate.setText("Last Update: " + carInfo.get(1));
-                        txtViewDetails.setText(carInfo.get(2));
-                        imageViewCar.setImageResource(R.drawable.car);
-                        mProgressBar.setVisibility(View.INVISIBLE);
-                        //mProgressBar.setVisibility(getView().INVISIBLE);
+                        txtViewPrice.setText("Price: $" + carInfo.get(0));      // sets price
+                        txtViewUpdate.setText("Last Update: " + carInfo.get(1));// sets last update
+                        txtViewDetails.setText(carInfo.get(2));                 // sets car's details
+                        imageViewCar.setImageResource(R.drawable.car);          // sets car's image
+                        mProgressBar.setVisibility(View.INVISIBLE);             // sets progress bar invisible again
                     }
                 });
             }
@@ -171,7 +170,7 @@ public class RightFragment extends Fragment{
     @Override
     public void onDetach() {
         super.onDetach();
-        mCommunicator = null;
+        mCommunicator = null;           // sets mCommunicator to null
     }
 
 
